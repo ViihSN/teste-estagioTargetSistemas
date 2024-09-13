@@ -6,29 +6,25 @@ const faturamentoPorEstado = {
     Outros: 19849.53
 }
 
-//valor total
-let total = 0; 
+function mostrarFaturamento() {
 
-//iteração nos valores dos estados e soma de cada valor na variavel total
-for (const valor of Object.values(faturamentoPorEstado)) {
-    total += valor;
-}
+    let total = 0;
 
-//objeto vazia - vai ser usado para armazenar o valor de cada estado
-const percentualRepresentado = {};
+    for (const valor of Object.values(faturamentoPorEstado)) {
+        total += valor;
+    }
 
-//loop que itera sobre cada par (chave: estado/valor: valor) 
-for (const [estado, valor] of Object.entries(faturamentoPorEstado)) {
-                              //retorna uma matriz de pares
-    percentualRepresentado[estado] = ((valor / total)*100).toFixed(2);
-    //calcula a fração do total que o valor do estado representa.
-    //toFixed - formata a fração para 2 casas decimais
-}
+    const percentualRepresentado = {};
 
-console.log("Valor Total: ", total.toFixed(2));
-console.log("Percentuais de Representação: ");
+    for (const [estado, valor] of Object.entries(faturamentoPorEstado)) {
 
-for (const [estado, percentual] of Object.entries(percentualRepresentado)) {
-    console.log(`${estado}: ${percentual}%`);
-    //o loop itera sobre cada par retornado por Object.entries
+        percentualRepresentado[estado] = ((valor / total) * 100).toFixed(2);
+    }
+
+    let resultado = `Valor Total: R$ ${total.toFixed(2)}\n\nPercentuais de Representação:\n`;
+    for (const [estado, percentual] of Object.entries(percentualRepresentado)) {
+        resultado += `${estado}: ${percentual}%\n`;
+    }
+
+    document.getElementById('resultado').innerText = resultado;
 }

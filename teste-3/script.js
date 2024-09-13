@@ -1,4 +1,4 @@
-//Declaração de dados - JSON
+
 const dadosFaturamento = {
     "Faturamentos de uma Distribuidora": [
         {
@@ -64,45 +64,42 @@ const dadosFaturamento = {
     ]
 };
 
-//nome da função: calculoDoFaturamento - argumento: valores
+
 function calculoDoFaturamento(valores) {
-    
-    //inicialização de um arrey com os valores do JSON (faturamentos de uma distribuidora)
+
+
     const faturamentos = valores["Faturamentos de uma Distribuidora"];
-    
-    //metodo filter 
+
+
     const diasFaturamento = faturamentos.filter(dia => dia.valor > 0);
-    
-    //verifica se diasFaturamento esta "vazio", se estiver, exibe a mensagem e a função termina no return
+
     if (diasFaturamento.length === 0) {
         console.log("Nenhum dia com faturamento disponivel.");
         return;
     }
 
-    //map cria um array apenas com valores filtrados
+
     const valoresFaturamento = diasFaturamento.map(dia => dia.valor);
 
-    //calcula os valores através do Math(min e max).
     const menorFaturamento = Math.min(...valoresFaturamento);
     const maiorFaturamento = Math.max(...valoresFaturamento);
 
-    //armazena a soma dos valores de faturamento - o loop soma todos os valores
     let somarFaturamento = 0;
     for (const valor of valoresFaturamento) {
         somarFaturamento += valor;
     }
 
-    //calcula o valor médio dividindo a soma total pelo numeros de dias.
     const valorMensal = somarFaturamento / valoresFaturamento.length;
 
-    //filtra valores maiores que o valor médio
     const diasMaioresLucros = valoresFaturamento.filter(valor => valor > valorMensal).length;
 
-    //mostra os resultados
-    console.log(`Menor valor de faturamento do mês: ${menorFaturamento}`);
-    console.log(`Maior valor de faturamento do mês: ${maiorFaturamento}`);
-    console.log(`Dias com maiores lucros de faturamento mensal: ${diasMaioresLucros}`);
+    const resultado = `
+        Menor valor de faturamento do mês: ${menorFaturamento.toFixed(2)}\n
+        Maior valor de faturamento do mês: ${maiorFaturamento.toFixed(2)}\n
+        Dias com maiores lucros de faturamento mensal: ${diasMaioresLucros}
+    `;
+
+    document.getElementById('resultado').innerText = resultado;
 }
 
-//chamada da função com o objeto como argumento.
 calculoDoFaturamento(dadosFaturamento);
