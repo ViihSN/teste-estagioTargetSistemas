@@ -1,0 +1,31 @@
+Teste 1 - Resposta do pseudocodigo:
+-----------------------------------
+int INDICE = 13, SOMA = 0, K = 0;
+Enquanto K < INDICE faça {
+    K = K + 1; (0 para 1)
+    SOMA = SOMA + K; (0 por 1)
+}
+Imprimir(SOMA);
+
+Resposta: O valor da variavel SOMA é = 91 
+
+Explicação:
+-----------
+
+Inicio (K = 0 e SOMA = 0)
+Iterações:]
+----------
+1° (enquanto K for menor que o INDICE (13), 
+faça K virar K + 1, e faça SOMA virar SOMA + 1);
+2° (K vira 2, e SOMA vira 3 )
+3° (k vira 3, e SOMA vira 6 )
+4° (K vira 4, e SOMA vira 10)
+5° (K vira 5, e SOMA vira 15)
+6° (K vira 6, e SOMA vira 21)
+7° (K vira 7, e SOMA vira 28)
+8° (K vira 8, e SOMA vira 36)
+9° (K vira 9, e SOMA vira 45)
+10° (K vira 10, e SOMA vira 55)
+11° (K vira 11, e SOMA vira 66)
+12° (K vira 12, e SOMA vira 78)
+13° (K vira 13, e SOMA vira 91)
